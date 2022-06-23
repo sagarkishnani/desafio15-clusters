@@ -1,0 +1,6 @@
+pm2 start ./server.js --port=8080 --modo=fork
+
+pm2 start ./server.js --port=8081 --modo=cluster
+
+forever start server.js 8080 
+forever list
