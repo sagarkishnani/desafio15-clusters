@@ -1,6 +1,15 @@
-pm2 start ./server.js --port=8080 --modo=fork
+nodemon server.js -m fork -p 8080
 
-pm2 start ./server.js --port=8081 --modo=cluster
+forever start server.js -m fork -p 8080
 
-forever start server.js 8080 
-forever list
+pm2 start server.js –name=“server-fork” –watch – 8080
+
+pm2 start server.js –name=“server-fork” –watch -i max – 8080
+
+pm2 start server.js –name=“server-fork” –watch -i max – 8081
+
+pm2 start server.js –name=“server-fork” –watch -i max – 8082
+
+pm2 start server.js –name=“server-fork” –watch -i max – 8083
+
+pm2 start server.js –name=“server-fork” –watch -i max – 8084

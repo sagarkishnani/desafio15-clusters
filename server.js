@@ -20,16 +20,22 @@ if (cluster.isMaster) {
 } else {
   const PORT = parseInt(process.argv[2]) || 8080;
 
-  app.get("/", (req, res) => {
+  app.get("/info", (req, res) => {
     res.send(
       `Servidor en puerto ${PORT} - <b>PID ${
         process.pid
-      }</b> - ${new Date().toLocaleString()}`
+      }</b> - ${new Date().toLocaleString()} <br> ${process.pid}`
     );
+  });
+
+  app.get("/api/randoms", (req, res) => {
+    res.send(`Random`);
   });
 
   app.listen(PORT, (err) => {
     if (!err)
       console.log(`Servidor escuchando en puerto ${PORT} - PID ${process.pid}`);
   });
+
+  app.on("error", (error) => console.log(`Error en servidor ${error}`));
 }
